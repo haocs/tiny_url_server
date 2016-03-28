@@ -40,5 +40,9 @@ coverage.xml
 instance/
 
 # virtualenv
+.virtualenv/
 venv/
 ENV/
+
+# pycharm/idea
+.idea/
