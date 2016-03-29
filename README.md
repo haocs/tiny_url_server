@@ -57,7 +57,7 @@ python app.py
 # visit:
 curl localhost:5000
 # generate short url:
-cur --form "origin_url='haoc.io'" localhost:5000/v
+curl --form "origin_url='haoc.io'" localhost:5000/g
 # visit short url:
 curl "localhost:5000/v/******
 ```
