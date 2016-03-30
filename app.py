@@ -22,13 +22,12 @@ def generate_short_url():
     short_url = cache.get(origin_url)
     if short_url:
         return short_url
-    id = Urls.query.filter_by(origin_url=origin_url).first()
-    if not id:
-        new_url = Urls(origin_url)
-        db.session.add(new_url)
+    url = Urls.query.filter_by(origin_url=origin_url).first()
+    if not url:
+        url = Urls(origin_url)
+        db.session.add(url)
         db.session.commit()
-        id = new_url.id
-    short_url = UrlConverter.id_to_base62_url(id)
+    short_url = UrlConverter.id_to_base62_url(url.id)
     # cache short_url
     cache.put(origin_url, short_url)
     return short_url
@@ -45,4 +44,4 @@ def get_origin_url(short_url):
     return origin_url
 
 if __name__=='__main__':
-    app.run(host='0.0.0.0',debug=True)
+    app.run(host='0.0.0.0')
